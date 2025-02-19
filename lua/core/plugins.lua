@@ -77,7 +77,13 @@ require("lazy").setup({
       end
     },
 
-
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        ---@module "ibl"
+        ---@type ibl.config
+        opts = {},
+    },
     {
   -- Подключаем LSP-сервер от SonarSource
   "SonarSource/sonarlint-language-server",
