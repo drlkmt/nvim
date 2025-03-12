@@ -36,6 +36,7 @@ require("lazy").setup({
     { "rose-pine/neovim", name = "rose-pine" },
     { 'rebelot/kanagawa.nvim' },
     { 'navarasu/onedark.nvim' },
+    { 'jose-elias-alvarez/null-ls.nvim' },
 
 	{'phaazon/hop.nvim'},
 	{

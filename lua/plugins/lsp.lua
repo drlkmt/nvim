@@ -5,6 +5,24 @@ local lspconfig = require('lspconfig')
 local configs = require("lspconfig.configs")
 
 lspconfig.ts_ls.setup {}
+
+-- Было: lspconfig.terrafromls.setup {}
+lspconfig.terraformls.setup {
+  capabilities = capabilities,
+  filetypes = { "terraform", "tf", "terraform-vars" },
+  on_attach = function(client, bufnr)
+    -- Дополнительные настройки при необходимости
+  end
+}
+--
+-- В lua/plugins/lsp.lua или новый файл
+local null_ls = require("null-ls")
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.terraform_fmt
+  }
+})
+
 lspconfig.prismals.setup {}
 lspconfig.cssls.setup {
     capabilities = capabilities
