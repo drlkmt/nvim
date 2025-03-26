@@ -72,6 +72,8 @@ return {
       servers = {
         -- pyright will be automatically installed with mason and loaded with lspconfig
         pyright = {},
+        dockerls = {},
+        docker_compose_language_service = {},
       },
     },
   },
@@ -134,6 +136,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "dockerfile",
       },
     },
   },
@@ -191,6 +194,9 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "hadolint",
+        "dockerfile-language-server",
+        "docker-compose-language-service",
       },
     },
   },
