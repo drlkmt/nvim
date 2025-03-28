@@ -22,16 +22,16 @@ return {
       },
       ui = {
         icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗"
+          package_installed = "󰄳",
+          package_pending = "",
+          package_uninstalled = "󰚌"
         }
       }
     },
     config = function(_, opts)
       require("mason").setup(opts)
       local mr = require("mason-registry")
-      
+
       -- Автоматическая установка отсутствующих пакетов при старте
       local function ensure_installed()
         for _, tool in ipairs(opts.ensure_installed) do
@@ -41,7 +41,7 @@ return {
           end
         end
       end
-      
+
       if mr.refresh then
         mr.refresh(ensure_installed)
       else

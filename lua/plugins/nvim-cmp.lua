@@ -12,7 +12,7 @@ return {
     config = function()
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      
+
       cmp.setup({
         snippet = {
           expand = function(args)
@@ -53,30 +53,30 @@ return {
         formatting = {
           format = function(entry, item)
             local icons = {
-              Text = "",
-              Method = "",
-              Function = "",
+              Text = "󰉿",
+              Method = "󰆧",
+              Function = "󰊕",
               Constructor = "",
-              Field = "ﰠ",
-              Variable = "",
-              Class = "ﴯ",
+              Field = "󰜢",
+              Variable = "󰀫",
+              Class = "󰠱",
               Interface = "",
               Module = "",
-              Property = "ﰠ",
-              Unit = "塞",
-              Value = "",
+              Property = "󰜢",
+              Unit = "󰑭",
+              Value = "󰎠",
               Enum = "",
-              Keyword = "",
+              Keyword = "󰌋",
               Snippet = "",
-              Color = "",
-              File = "",
-              Reference = "",
-              Folder = "",
+              Color = "󰏘",
+              File = "󰈙",
+              Reference = "󰈇",
+              Folder = "󰉋",
               EnumMember = "",
-              Constant = "",
-              Struct = "פּ",
+              Constant = "󰏿",
+              Struct = "󰙅",
               Event = "",
-              Operator = "",
+              Operator = "󰆕",
               TypeParameter = ""
             }
             item.kind = string.format("%s %s", icons[item.kind], item.kind)
