@@ -11,19 +11,11 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local keymapping = require("config.keymapping")
 
       -- Настройка keymaps при подключении LSP
       local on_attach = function(client, bufnr)
-        local opts = { noremap = true, silent = true, buffer = bufnr }
-
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-        vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-        vim.keymap.set("n", "<leader>f", function()
-          vim.lsp.buf.format { async = true }
-        end, opts)
+        keymapping.setup_lsp_keymaps(bufnr)
       end
 
       -- Настройка возможностей LSP с nvim-cmp
