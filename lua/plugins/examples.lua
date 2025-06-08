@@ -6,15 +6,16 @@
 -- * override the configuration of lazyvim plugins
 return {
   -- add gruvbox
-  -- { "ellisonleao/gruvbox.nvim" },
+  { "folke/tokyonight.nvim" },
+  { "rose-pine/neovim" },
 
-  -- -- configure lazyvim to load gruvbox
-  -- {
-  --   "lazyvim/lazyvim",
-  --   opts = {
-  --     colorscheme = "gruvbox",
-  --   },
-  -- },
+  -- configure lazyvim to load gruvbox
+  {
+    "lazyvim/lazyvim",
+    opts = {
+      colorscheme = "tokyonight-storm",
+    },
+  },
 
   -- change trouble config
   {
@@ -212,6 +213,31 @@ return {
     keys = {
       -- убираем встроенный маппинг на <leader>e, чтобы конфликтовать с вашим
       { "<leader>e", false },
+    },
+  },
+
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^6", -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+
+  { -- This plugin
+    "Zeioth/compiler.nvim",
+    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    dependencies = { "stevearc/overseer.nvim", "nvim-telescope/telescope.nvim" },
+    opts = {},
+  },
+  { -- The task runner we use
+    "stevearc/overseer.nvim",
+    cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
+    opts = {
+      task_list = {
+        direction = "bottom",
+        min_height = 25,
+        max_height = 25,
+        default_detail = 1,
+      },
     },
   },
 }
