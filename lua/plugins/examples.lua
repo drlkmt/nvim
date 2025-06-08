@@ -1,20 +1,16 @@
--- since this is just an example spec, don't actually load anything here and return an empty spec
--- stylua: ignore
-if true then return {} end
-
 -- every spec file under the "plugins" directory will be loaded automatically by lazy.nvim
 --
--- In your plugin files, you can:
+-- in your plugin files, you can:
 -- * add extra plugins
--- * disable/enabled LazyVim plugins
--- * override the configuration of LazyVim plugins
+-- * disable/enabled lazyvim plugins
+-- * override the configuration of lazyvim plugins
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },
 
-  -- Configure LazyVim to load gruvbox
+  -- configure lazyvim to load gruvbox
   {
-    "LazyVim/LazyVim",
+    "lazyvim/lazyvim",
     opts = {
       colorscheme = "gruvbox",
     },
@@ -34,7 +30,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = { "hrsh7th/cmp-emoji" },
-    ---@param opts cmp.ConfigSchema
+    ---@param opts cmp.configschema
     opts = function(_, opts)
       table.insert(opts.sources, { name = "emoji" })
     end,
@@ -49,7 +45,7 @@ return {
       {
         "<leader>fp",
         function() require("telescope.builtin").find_files({ cwd = require("lazy.core.config").options.root }) end,
-        desc = "Find Plugin File",
+        desc = "find plugin file",
       },
     },
     -- change some options
@@ -66,7 +62,7 @@ return {
   -- add pyright to lspconfig
   {
     "neovim/nvim-lspconfig",
-    ---@class PluginLspOpts
+    ---@class pluginlspopts
     opts = {
       ---@type lspconfig.options
       servers = {
@@ -84,12 +80,12 @@ return {
       init = function()
         require("lazyvim.util").lsp.on_attach(function(_, buffer)
           -- stylua: ignore
-          vim.keymap.set( "n", "<leader>co", "TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
-          vim.keymap.set("n", "<leader>cR", "TypescriptRenameFile", { desc = "Rename File", buffer = buffer })
+          vim.keymap.set( "n", "<leader>co", "typescriptorganizeimports", { buffer = buffer, desc = "organize imports" })
+          vim.keymap.set("n", "<leader>cr", "typescriptrenamefile", { desc = "rename file", buffer = buffer })
         end)
       end,
     },
-    ---@class PluginLspOpts
+    ---@class pluginlspopts
     opts = {
       ---@type lspconfig.options
       servers = {
@@ -105,15 +101,11 @@ return {
           require("typescript").setup({ server = opts })
           return true
         end,
-        -- Specify * to use this function as a fallback for any server
+        -- specify * to use this function as a fallback for any server
         -- ["*"] = function(server, opts) end,
       },
     },
   },
-
-  -- for typescript, LazyVim also includes extra specs to properly setup lspconfig,
-  -- treesitter, mason and typescript.nvim. So instead of the above, you can use:
-  { import = "lazyvim.plugins.extras.lang.typescript" },
 
   -- add more treesitter parsers
   {
@@ -134,13 +126,15 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "rust",
+        "toml",
       },
     },
   },
 
   -- since `vim.tbl_deep_extend`, can only merge tables and not lists, the code above
   -- would overwrite `ensure_installed` with the new value.
-  -- If you'd rather extend the default config, use the code below instead:
+  -- if you'd rather extend the default config, use the code below instead:
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
@@ -176,12 +170,6 @@ return {
     end,
   },
 
-  -- use mini.starter instead of alpha
-  { import = "lazyvim.plugins.extras.ui.mini-starter" },
-
-  -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
-  { import = "lazyvim.plugins.extras.lang.json" },
-
   -- add any tools you want to have installed below
   {
     "williamboman/mason.nvim",
@@ -191,6 +179,9 @@ return {
         "shellcheck",
         "shfmt",
         "flake8",
+        "rust-analyzer",
+        "codelldb",
+        "rustfmt",
       },
     },
   },
