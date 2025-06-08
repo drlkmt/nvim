@@ -6,15 +6,15 @@
 -- * override the configuration of lazyvim plugins
 return {
   -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
+  -- { "ellisonleao/gruvbox.nvim" },
 
-  -- configure lazyvim to load gruvbox
-  {
-    "lazyvim/lazyvim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
-  },
+  -- -- configure lazyvim to load gruvbox
+  -- {
+  --   "lazyvim/lazyvim",
+  --   opts = {
+  --     colorscheme = "gruvbox",
+  --   },
+  -- },
 
   -- change trouble config
   {
@@ -183,6 +183,21 @@ return {
         "codelldb",
         "rustfmt",
       },
+    },
+  },
+
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    event = "VeryLazy",
+    opts = {
+      window = {
+        position = "float",
+        popup_border_style = "rounded",
+      },
+    },
+    keys = {
+      -- убираем встроенный маппинг на <leader>e, чтобы конфликтовать с вашим
+      { "<leader>e", false },
     },
   },
 }

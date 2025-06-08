@@ -11,7 +11,8 @@ vim.g.autoformat = true
 -- Snacks animations
 -- Set to `false` to globally disable all snacks animations
 vim.g.snacks_animate = true
-
+vim.g.snacks_explorer_disable = true
+vim.g.snacks_picker_disable = true
 -- LazyVim picker to use.
 -- Can be one of: telescope, fzf
 -- Leave it to "auto" to automatically use the picker

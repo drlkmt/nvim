@@ -219,3 +219,11 @@ if vim.fn.has("nvim-0.11") == 0 then
     return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
   end, { expr = true, desc = "Jump Previous" })
 end
+
+-- Открытие/focus neo-tree с float-окном
+map("n", "<leader>e", function()
+  require("neo-tree.command").execute({
+    toggle = true,
+    position = "float", -- на случай, если в opts не указан float
+  })
+end, { desc = "Explorer NeoTree (float)", noremap = true, silent = true })
